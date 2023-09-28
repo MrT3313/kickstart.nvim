@@ -86,22 +86,23 @@ require('lazy').setup({
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
-    -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
+      -- LSP Configuration & Plugins
+      'neovim/nvim-lspconfig',
+      dependencies = {
+          -- Automatically install LSPs to stdpath for neovim
+          { 'williamboman/mason.nvim', config = true },
+          'williamboman/mason-lspconfig.nvim',
 
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+          -- Useful status updates for LSP
+          -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+          { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
-    },
+          -- Additional lua configuration, makes nvim stuff amazing!
+          'folke/neodev.nvim',
+      },
   },
 
+  { 'prettier/vim-prettier',},
 
   -- Adding NERDTree
   {
@@ -264,6 +265,19 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 }, {})
+
+-- Configure vim-prettier to use local .prettierrc file
+vim.g['prettier#autoformat_config'] = {
+  use_local_config = true,
+}
+
+-- Define an autocmd to run PrettierAsync before saving a file
+vim.cmd([[
+  augroup PrettierAutoFormat
+    autocmd!
+    autocmd BufWritePre * PrettierAsync
+  augroup END
+]])
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
