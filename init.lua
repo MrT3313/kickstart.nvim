@@ -37,6 +37,15 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
+
+--[[
+=======================
+===== REEDS EDITS =====
+=======================
+--]]
+
+vim.cmd("source ~/.config/nvim/after/plugins/default.lua")
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -91,6 +100,38 @@ require('lazy').setup({
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
+  },
+
+
+  -- Adding NERDTree
+  {
+    'preservim/nerdtree',
+    config = function()
+      -- Configuration options for NERDTree can go here
+
+      -- Set NERDTree key mappings
+      local nmap_nerdtree = function(keys, func, desc)
+        if desc then
+          desc = 'NERDTree: ' .. desc
+        end
+
+        vim.keymap.set('n', keys, func, { desc = desc })
+      end
+
+      -- Using the leader key 'SPACE'
+      nmap_nerdtree('<leader>fo', ':NERDTreeFocus<CR>', 'Focus on NERDTree')  -- Trigger with 'SPACE f'
+      nmap_nerdtree('<leader>ft', ':NERDTreeToggle<CR>', 'Toggle NERDTree')  -- Trigger with 'SPACE ft'
+      nmap_nerdtree('<leader>fp', ':NERDTree<CR>', 'Open NERDTree')  -- Trigger with 'SPACE to'
+      nmap_nerdtree('<leader>ff', ':NERDTreeFind<CR>', 'Find in NERDTree')  -- Trigger with 'SPACE ff'
+    end,
+  },
+
+  -- Adding vim-devicons (assuming you have the necessary fonts)
+  {
+    'ryanoasis/vim-devicons',
+    config = function()
+      -- Configuration options for vim-devicons
+    end,
   },
 
   {
