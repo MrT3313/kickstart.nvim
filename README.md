@@ -1,3 +1,9 @@
+# Reed's Resources
+
+- [TJ : Neovim Video](https://www.youtube.com/watch?v=stqUbv-5u2s)
+- [Kickstart Your Neovim Config](https://www.youtube.com/watch?v=hnTXJGm8VBA&t=265s)
+---
+
 # kickstart.nvim
 
 https://github.com/kdheepak/kickstart.nvim/assets/1813121/f3ff9a2b-c31f-44df-a4fa-8a0d7b17cf7b
